@@ -1,0 +1,14 @@
+.metadata
+.settings
+.classpath
+.project
+bin
+target
+felix-cache
+workspace
+*.log
+*.log.*
+*.lock
+*~
+dependency-reduced-pom.xml
+Thumbs.db
