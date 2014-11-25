@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.types;
+package com.puresoltechnologies.commons.money;
 
 import java.io.Serializable;
 import java.util.Arrays;

@@ -15,9 +15,36 @@ public class VersionTest {
 	new Version(0, 0, 1, null, null);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testIllegalLeadingZeroMajorNumber() {
+	Version.valueOf("01.2.3");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIllegalLeadingZeroMinorNumber() {
+	Version.valueOf("1.02.3");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIllegalLeadingZeroPatchNumber() {
+	Version.valueOf("1.2.03");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIllegalLeadingZeroPreReleaseInformation() {
+	Version.valueOf("1.2.3-1.02");
+    }
+
     @Test
     public void testValueOf() {
-	Version version = Version.valueOf("1.2.3-alpha");
+	Version version = Version.valueOf("1.2.3-pre+build");
+	assertThat(version.getMajor(), equalTo(1));
+	assertThat(version.getMinor(), equalTo(2));
+	assertThat(version.getPatch(), equalTo(3));
+	assertThat(version.getPreReleaseInformation(), equalTo("pre"));
+	assertThat(version.getBuildMetadata(), equalTo("build"));
+
+	version = Version.valueOf("1.2.3-alpha");
 	assertThat(version.getMajor(), equalTo(1));
 	assertThat(version.getMinor(), equalTo(2));
 	assertThat(version.getPatch(), equalTo(3));

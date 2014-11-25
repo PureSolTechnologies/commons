@@ -1,9 +1,11 @@
-package com.puresoltechnologies.commons.types;
+package com.puresoltechnologies.commons.money;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
+import com.puresoltechnologies.commons.money.MoneyMath;
 
 public class MoneyMathTest {
 
