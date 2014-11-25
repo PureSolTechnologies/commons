@@ -7,7 +7,8 @@ import org.codehaus.jackson.annotate.JsonProperty;
  * This class represents a single password. This class basically keeps a simple
  * {@link String}, but this class was introduced to point developers to the
  * fact, that the object handled here, is a password to enforce some care in
- * handling it.
+ * handling it. Additionally, the toString method which is used for debugging
+ * and in some monitoring software does not provide the password automatically.
  * 
  * @author Rick-Rainer Ludwig
  */
@@ -27,13 +28,13 @@ public final class Password {
 	this.password = password;
     }
 
-    @Override
-    public String toString() {
+    public String getPassword() {
 	return password;
     }
 
-    public String getPassword() {
-	return password;
+    @Override
+    public String toString() {
+	return "XXXXXXXX (password)";
     }
 
     @Override
@@ -62,4 +63,8 @@ public final class Password {
 	return true;
     }
 
+    @Override
+    protected Password clone() {
+	return new Password(password);
+    }
 }

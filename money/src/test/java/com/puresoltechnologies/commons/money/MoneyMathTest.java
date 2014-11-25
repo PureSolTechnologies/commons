@@ -5,8 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.puresoltechnologies.commons.money.MoneyMath;
-
 public class MoneyMathTest {
 
     @Test
