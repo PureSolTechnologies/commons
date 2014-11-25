@@ -18,6 +18,10 @@ import org.codehaus.jackson.annotate.JsonProperty;
  * href="http://en.wikipedia.org/wiki/Hostname">http://en.wikipedia.org/wiki
  * /Hostname</a></li>
  * </ul>
+ *
+ * It is planned to introduce a complete check here for the email address to be
+ * compliant with the related RFC and to provide some information whether this
+ * email address is suspicious for spamming.
  * 
  * @author Rick-Rainer Ludwig
  *
@@ -112,11 +116,6 @@ public final class EmailAddress implements Serializable {
 	this.domainPart = domainPart;
     }
 
-    @Override
-    public final String toString() {
-	return address;
-    }
-
     public final String getLocalPart() {
 	return localPart;
     }
@@ -126,6 +125,11 @@ public final class EmailAddress implements Serializable {
     }
 
     public final String getAddress() {
+	return address;
+    }
+
+    @Override
+    public final String toString() {
 	return address;
     }
 
@@ -154,4 +158,8 @@ public final class EmailAddress implements Serializable {
 	return true;
     }
 
+    @Override
+    protected EmailAddress clone() {
+	return new EmailAddress(localPart, domainPart);
+    }
 }

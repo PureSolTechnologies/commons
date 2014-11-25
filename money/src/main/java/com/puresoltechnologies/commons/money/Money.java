@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.types;
+package com.puresoltechnologies.commons.money;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -38,7 +38,26 @@ public class Money implements Comparable<Money>, Serializable {
 	}
 	this.currency = currency;
 	this.fraction = fraction;
+	checkFraction();
 	this.amount = amount;
+    }
+
+    private void checkFraction() {
+	if (fraction <= 0) {
+	    throw new IllegalArgumentException(
+		    "The fraction must not be negative or zero.");
+	}
+	int temp = fraction;
+	while (temp > 10) {
+	    if (temp == 1) {
+		break;
+	    }
+	    if (temp % 10 != 0) {
+		throw new IllegalArgumentException(
+			"The fraction must be a positive number with any positive exponent to the base of 10.");
+	    }
+	    temp /= 10;
+	}
     }
 
     public String getCurrency() {

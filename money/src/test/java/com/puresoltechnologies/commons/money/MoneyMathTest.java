@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.types;
+package com.puresoltechnologies.commons.money;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

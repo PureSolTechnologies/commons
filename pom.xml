@@ -86,7 +86,17 @@
 			</dependency>
 			<dependency>
 				<groupId>com.puresoltechnologies.commons</groupId>
+				<artifactId>money</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.puresoltechnologies.commons</groupId>
 				<artifactId>trees</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.puresoltechnologies.commons</groupId>
+				<artifactId>types</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -174,6 +184,7 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -209,23 +220,23 @@
 				<artifactId>maven-bundle-plugin</artifactId>
 				<version>2.5.3</version>
 				<extensions>true</extensions>
-				<executions>
-					<execution>
-						<id>bundle-manifest</id>
-						<phase>process-classes</phase>
-						<goals>
-							<goal>manifest</goal>
-						</goals>
-						<configuration>
-							<instructions>
-								<Bundle-Name>${project.name}</Bundle-Name>
-							</instructions>
-						</configuration>
-					</execution>
-				</executions>
 				<configuration>
+					<manifestLocation>META-INF</manifestLocation>
 					<instructions>
-						<DynamicImport-Package>*</DynamicImport-Package>
+						<!-- The Bundle-SymbolicName is fixed in this way. Otherwise Tycho 
+							will not find the bundle. -->
+						<Bundle-SymbolicName>${bundle.namespace}.bundle</Bundle-SymbolicName>
+						<Bundle-Name>${bundle.namespace}.bundle</Bundle-Name>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
+						<Export-Package>${bundle.namespace}.*;version="${project.version}"</Export-Package>
+						<Bundle-Activator>${bundle.namespace}.Activator</Bundle-Activator>
+						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+						<!-- embed compile/runtime dependencies using path that matches the 
+							copied dependency folder -->
+						<Embed-Dependency>*;scope=compile|runtime;inline=false</Embed-Dependency>
+						<Embed-Directory>dependencies</Embed-Directory>
+						<Embed-StripGroup>true</Embed-StripGroup>
 					</instructions>
 				</configuration>
 			</plugin>
@@ -254,23 +265,6 @@
 		</extensions>
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.5</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>test-jar</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<archive>
-							<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-						</archive>
-					</configuration>
-				</plugin>
 				<!--This plugin's configuration is used to store Eclipse m2e settings 
 					only. It has no influence on the Maven build itself. -->
 				<plugin>
@@ -330,9 +324,11 @@
 	<modules>
 		<module>osgi</module>
 		<module>types</module>
-		<!-- module>types.bundle</module -->
+		<module>types.bundle</module>
 		<module>trees</module>
 		<module>trees.bundle</module>
+		<module>money</module>
+		<module>money.bundle</module>
 	</modules>
 
 </project>

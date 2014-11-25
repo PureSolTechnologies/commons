@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.types;
+package com.puresoltechnologies.commons.money;
 
 public class MoneyMath {
 
