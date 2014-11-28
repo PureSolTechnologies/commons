@@ -36,11 +36,11 @@ public class StopWatch implements Serializable {
     }
 
     public Date getStartTime() {
-	return (Date) startTime.clone();
+	return startTime != null ? (Date) startTime.clone() : null;
     }
 
     public Date getStopTime() {
-	return (Date) stopTime.clone();
+	return stopTime != null ? (Date) stopTime.clone() : null;
     }
 
     public long getMilliseconds() {
