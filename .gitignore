@@ -1,9 +1,14 @@
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
 .metadata
 .settings
 .classpath
 .project
 bin
-target
 felix-cache
 workspace
 *.log
