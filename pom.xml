@@ -69,7 +69,7 @@
 		<site>
 			<id>FTPPureSolTechnologiesCom</id>
 			<name>FTPPureSolTechnologiesCom</name>
-			<url>ftp://puresol-technologies.com/opensource/commons</url>
+			<url>ftp://puresol-technologies.com/opensource.puresol-technologies.com/projects/commons</url>
 		</site>
 	</distributionManagement>
 
