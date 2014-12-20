@@ -1,9 +1,11 @@
-package com.puresoltechnologies.commons.types;
+package com.puresoltechnologies.commons.versioning;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 import org.junit.Test;
+
+import com.puresoltechnologies.commons.versioning.Version;
 
 public class VersionTest {
 

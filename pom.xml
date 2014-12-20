@@ -104,6 +104,11 @@
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>com.puresoltechnologies.commons</groupId>
+				<artifactId>versioning</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.codehaus.jackson</groupId>
 				<artifactId>jackson-core-asl</artifactId>
 				<version>1.9.13</version>
@@ -335,6 +340,8 @@
 
 	<modules>
 		<module>osgi</module>
+		<module>versioning</module>
+		<module>versioning.bundle</module>
 		<module>types</module>
 		<module>types.bundle</module>
 		<module>trees</module>

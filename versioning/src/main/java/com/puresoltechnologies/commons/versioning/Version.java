@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.types;
+package com.puresoltechnologies.commons.versioning;
 
 import java.io.Serializable;
 import java.util.regex.Matcher;
