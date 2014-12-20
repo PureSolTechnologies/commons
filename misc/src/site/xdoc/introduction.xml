@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+	<properties>
+		<title>Introduction</title>
+		<author email="ludwig@puresol-technologies.com">Rick-Rainer Ludwig</author>
+	</properties>
+
+	<!-- Optional HEAD element, which is copied as is into the XHTML <head> 
+		element -->
+	<!-- head> <meta . /> </head -->
+
+	<body>
+		<section name="Introduction">
+			<p>
+				This is a module which contains all minor stuff which does not
+				belong to
+				another module, but is used multiple times over and over
+				again.
+			</p>
+			<p>
+				<b>WARNING:</b>
+				Because this
+				module is a collection of minor stuff which is used by
+				other
+				modules, it is not meant to be used for projects outside
+				of
+				PureSol Technologies, because everything in here will be replaced
+				by
+				an implementations better suited for the task at hand as soon as
+				a
+				fitting alternative is found. Nevertheless, it can be used, but
+				there is no support for it.
+			</p>
+			<p>
+				This is module also does not conform to the rule of
+				<a href="http://semver.org">semantic versioning</a>
+				. The implementation may change and may be removed anytime.
+			</p>
+		</section>
+	</body>
+</document>

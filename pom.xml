@@ -90,7 +90,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.puresoltechnologies.commons</groupId>
-				<artifactId>os</artifactId>
+				<artifactId>misc</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -341,8 +341,8 @@
 		<module>trees.bundle</module>
 		<module>money</module>
 		<module>money.bundle</module>
-		<module>os</module>
-		<module>os.bundle</module>
+		<module>misc</module>
+		<module>misc.bundle</module>
 	</modules>
 
 </project>
