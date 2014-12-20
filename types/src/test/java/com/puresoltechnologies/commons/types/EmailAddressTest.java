@@ -1,5 +1,11 @@
 package com.puresoltechnologies.commons.types;
 
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -52,4 +58,14 @@ public class EmailAddressTest {
 	EmailAddress.validateDomainPart(domainPart);
     }
 
+    @Test
+    public void testJSONSerialization() throws JsonGenerationException,
+	    JsonMappingException, IOException {
+	EmailAddress original = new EmailAddress(
+		"ludwig@puresol-technologies.com");
+	String serialized = JSONSerializer.toJSONString(original);
+	EmailAddress deserialized = JSONSerializer.fromJSONString(serialized,
+		EmailAddress.class);
+	assertEquals(original, deserialized);
+    }
 }
