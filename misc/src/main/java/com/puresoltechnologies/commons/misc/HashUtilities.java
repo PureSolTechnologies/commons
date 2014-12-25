@@ -41,6 +41,8 @@ public class HashUtilities {
      * @param file
      *            the file to be read to calculate the {@link HashId}.
      * @return A {@link HashId} object is returned.
+     * @throws IOException
+     *             is thrown in case of an IO issue.
      */
     public static HashId createHashId(File file) throws IOException {
 	try (FileInputStream stream = new FileInputStream(file)) {
@@ -50,6 +52,12 @@ public class HashUtilities {
 
     /**
      * This method creates a {@link HashId} from a {@link String}.
+     * 
+     * @param string
+     *            is the string from which the {@link HashId} is to be created.
+     * @return A {@link HashId} is returned.
+     * @throws IOException
+     *             is thrown in cases of IO issues.
      */
     public static HashId createHashId(String string) throws IOException {
 	try (ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(

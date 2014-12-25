@@ -74,7 +74,8 @@ public class StringUtils {
     /**
      * 
      * @param string
-     * @return
+     *            is the string which is to be converted.
+     * @return An array of byte is returned containing the string as bytes.
      */
     public static byte[] convertStringToByteArray(String string) {
 	if (string == null) {

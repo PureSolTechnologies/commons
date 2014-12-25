@@ -74,6 +74,8 @@ public class FileUtilities {
      *            is the source file where it is intended to be copied from.
      * @param targetFile
      *            is the file to which everything is to be copied to.
+     * @return <code>true</code> is returned in case of a required update.
+     *         <code>false</code> is returned otherwise.
      */
     public static boolean isUpdateRequired(File sourceFile, File targetFile) {
 	if (targetFile.exists()) {
@@ -87,6 +89,15 @@ public class FileUtilities {
     /**
      * This method writes the content of a String into a file specified by a
      * directory and its fileName.
+     * 
+     * @param directory
+     *            is the output directory.
+     * @param fileName
+     *            is the file name of the target file.
+     * @param text
+     *            is the text to be written into the file.
+     * @return <code>true</code> is returned in case of success.
+     *         <code>false</code> is returned otherwise.
      */
     public static boolean writeFile(File directory, File fileName, String text) {
 	try {
@@ -145,6 +156,7 @@ public class FileUtilities {
      * @param file
      *            The file to recursively delete.
      * @throws IOException
+     *             is thrown in case of IO issues.
      **/
     public static void deleteFileOrDir(File file) throws IOException {
 	if (file.isDirectory()) {

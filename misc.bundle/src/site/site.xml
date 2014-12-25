@@ -6,12 +6,12 @@
         <version>0.1.0-SNAPSHOT</version>
     </skin>
   	<bannerLeft>
-		<name>PureSol Technologies' Commons - OS OSGi Bundle</name>
+		<name>PureSol Technologies' Commons - Miscellaneous OSGi Bundle</name>
 	</bannerLeft>
-	<body> 	
+	<body> 
  		<menu name="Overview">
-      			<item name="Introduction" href="introduction.html" /> 		
-      			<item name="Usage" href="usage.html" /> 		
+      			<item name="Introduction" href="introduction.html" />
+      			<item name="Usage" href="usage.html" />
  		</menu>
  		<menu name="Project Documentation">
 	 		<item name="Project Information" href="project-info.html">
