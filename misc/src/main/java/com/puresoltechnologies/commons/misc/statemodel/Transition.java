@@ -5,7 +5,7 @@ package com.puresoltechnologies.commons.misc.statemodel;
  * 
  * @author Rick-Rainer Ludwig
  */
-public interface Transition<S extends State<S>> {
+public interface Transition<S extends State<S, T>, T extends Transition<S, T>> {
 
     /**
      * This method returns the localized name of the transition which is needed
@@ -28,5 +28,5 @@ public interface Transition<S extends State<S>> {
      * 
      * @return
      */
-    public S getFinalState();
+    public S getTargetState();
 }

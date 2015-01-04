@@ -7,7 +7,7 @@ import java.util.Set;
  * 
  * @author Rick-Rainer Ludwig
  */
-public interface StateModel<S extends State<S>> {
+public interface StateModel<S extends State<S, T>, T extends Transition<S, T>> {
 
     /**
      * This method returns the start state which is not valid, yet, but the
@@ -38,13 +38,13 @@ public interface StateModel<S extends State<S>> {
      * 
      * @return The current {@link State} is returned.
      */
-    public State<S> getState();
+    public S getState();
 
     /**
      * This method checks whether a transition can be performed with the current
      * state.
      */
-    public boolean canPerformTransition(Transition<S> transition);
+    public boolean canPerformTransition(T transition);
 
     /**
      * This method performs the transition provided.
@@ -54,6 +54,6 @@ public interface StateModel<S extends State<S>> {
      *             is throw in case the transition is not valid for the current
      *             state.
      */
-    public void performTransition(Transition<S> transition);
+    public void performTransition(T transition);
 
 }

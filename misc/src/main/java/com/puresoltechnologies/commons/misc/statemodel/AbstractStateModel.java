@@ -6,8 +6,8 @@ package com.puresoltechnologies.commons.misc.statemodel;
  * @author Rick-Rainer Ludwig
  * 
  */
-public abstract class AbstractStateModel<S extends State<S>> implements
-	StateModel<S> {
+public abstract class AbstractStateModel<S extends State<S, T>, T extends Transition<S, T>>
+	implements StateModel<S, T> {
 
     private S currentState;
 
@@ -37,18 +37,18 @@ public abstract class AbstractStateModel<S extends State<S>> implements
     }
 
     @Override
-    public boolean canPerformTransition(Transition<S> transition) {
+    public boolean canPerformTransition(T transition) {
 	return currentState.getTransitions().contains(transition);
     }
 
     @Override
-    public final void performTransition(Transition<S> transition) {
+    public final void performTransition(T transition) {
 	if (!canPerformTransition(transition)) {
 	    throw new IllegalStateException("Transition '"
 		    + transition.getName() + "' is not allowed in state '"
 		    + currentState.getName() + "'");
 	}
-	currentState = transition.getFinalState();
+	currentState = transition.getTargetState();
     }
 
 }

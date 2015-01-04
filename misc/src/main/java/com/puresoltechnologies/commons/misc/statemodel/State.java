@@ -7,7 +7,7 @@ import java.util.Set;
  * 
  * @author Rick-Rainer Ludwig
  */
-public interface State<S extends State<S>> {
+public interface State<S extends State<S, T>, T extends Transition<S, T>> {
 
     /**
      * This method returns the localized name of the state which is needed to be
@@ -33,6 +33,6 @@ public interface State<S extends State<S>> {
      * 
      * @return
      */
-    public Set<Transition<S>> getTransitions();
+    public Set<T> getTransitions();
 
 }
