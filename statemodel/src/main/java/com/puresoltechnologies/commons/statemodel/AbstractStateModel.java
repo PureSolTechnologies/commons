@@ -1,7 +1,7 @@
-package com.puresoltechnologies.commons.misc.statemodel;
+package com.puresoltechnologies.commons.statemodel;
 
 /**
- * This is the first abstract implementation of a state model.
+ * This is the abstract implementation of a state model.
  * 
  * @author Rick-Rainer Ludwig
  * 

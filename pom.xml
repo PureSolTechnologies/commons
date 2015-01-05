@@ -96,6 +96,11 @@
 			</dependency>
 			<dependency>
 				<groupId>com.puresoltechnologies.commons</groupId>
+				<artifactId>statemodel</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.puresoltechnologies.commons</groupId>
 				<artifactId>trees</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -139,6 +144,12 @@
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.11</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.10.8</version>
 				<scope>test</scope>
 			</dependency>
 		</dependencies>
@@ -356,6 +367,8 @@
 		<module>trees.bundle</module>
 		<module>money</module>
 		<module>money.bundle</module>
+		<module>statemodel</module>
+		<module>statemodel.bundle</module>
 		<module>misc</module>
 		<module>misc.bundle</module>
 	</modules>

@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.misc.statemodel;
+package com.puresoltechnologies.commons.statemodel;
 
 import java.util.Set;
 
@@ -18,20 +18,13 @@ public interface State<S extends State<S, T>, T extends Transition<S, T>> {
     public String getName();
 
     /**
-     * This method returns the localized description of the state which is
-     * needed to be presented in a UI.
-     * 
-     * @return
-     */
-    public String getDescription();
-
-    /**
      * This method returns the valid, applicable transitions of the state.
      * 
      * The list of transition must not be null! An empty is list is to be
      * returned if no transition can be found!
      * 
-     * @return
+     * @return A {@link Set} of valid transitions is returned. The return value
+     *         must not be null, but an empty set is allowed.
      */
     public Set<T> getTransitions();
 

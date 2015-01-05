@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.misc.statemodel;
+package com.puresoltechnologies.commons.statemodel;
 
 /**
  * This interface represents a single transition within the state model.
@@ -14,14 +14,6 @@ public interface Transition<S extends State<S, T>, T extends Transition<S, T>> {
      * @return
      */
     public String getName();
-
-    /**
-     * This method returns the localized description of the transition which is
-     * needed to be presented in a UI.
-     * 
-     * @return
-     */
-    public String getDescription();
 
     /**
      * This is the final state of the transition.

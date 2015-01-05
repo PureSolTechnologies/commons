@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.misc.statemodel;
+package com.puresoltechnologies.commons.statemodel;
 
 import java.util.Set;
 
@@ -14,9 +14,10 @@ public interface StateModel<S extends State<S, T>, T extends Transition<S, T>> {
      * starting point of the first transition to be made. The first transition
      * may be on of multiple transitions.
      * 
-     * The start state must have on valid transition!
+     * The start state must have at least one valid transition!
      * 
-     * @return
+     * @return The start state is returned. The return value must not be null,
+     *         because every state model has to have a start state.
      */
     public S getStartState();
 
@@ -26,17 +27,19 @@ public interface StateModel<S extends State<S, T>, T extends Transition<S, T>> {
      * possible end states due to the normal ends, aborts and errors.
      * 
      * These are the states which must not have a transition! All other states
-     * need to have.
+     * need to have at least one.
      * 
      * @return A {@link Set} of state is returned which mark the end state of
-     *         the state model.
+     *         the state model. The return value must not be null, but the set
+     *         might be empty.
      */
     public Set<S> getEndStates();
 
     /**
      * This method returns the current {@link State} of the model.
      * 
-     * @return The current {@link State} is returned.
+     * @return The current {@link State} is returned. The return value must not
+     *         be null, because the state model has to be in one state.
      */
     public S getState();
 
