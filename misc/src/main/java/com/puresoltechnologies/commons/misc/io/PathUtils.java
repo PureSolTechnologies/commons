@@ -17,6 +17,11 @@ public class PathUtils {
      * This method converts a Class into a File which contains the package path.
      * This is used to access Jar contents or the content of source directories
      * to find source or class files.
+     * 
+     * @param clazz
+     *            is the class for which the source file is to be found.
+     * @return A {@link File} object is returned containing the relative path of
+     *         the file starting on package root level.
      */
     public static File classToRelativePackagePath(Class<?> clazz) {
 	if (File.separator.equals("/")) {
@@ -46,6 +51,9 @@ public class PathUtils {
      *            directory separator. The platform default is not assumed so
      *            that we can test Unix behaviour when running on Windows (for
      *            example)
+     * @return A {@link String} object is returned containing the relative path.
+     * @throws PathResolutionException
+     *             is thrown if the path cannot be resolved.
      */
     public static String getRelativePath(String fromPath, String toPath,
 	    String pathSeparator) throws PathResolutionException {

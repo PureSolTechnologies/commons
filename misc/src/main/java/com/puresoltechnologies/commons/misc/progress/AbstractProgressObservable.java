@@ -13,6 +13,7 @@ import java.util.List;
  * @author Rick-Rainer Ludwig
  * 
  * @param <Observable>
+ *            is the actual implementation of the observing class
  */
 public class AbstractProgressObservable<Observable> implements
 	ProgressObservable<Observable> {
@@ -83,15 +84,11 @@ public class AbstractProgressObservable<Observable> implements
 
     /**
      * This method is used to fire the
-     * {@link ProgressObserver#updateProgress(Object, String, long, long)} for
-     * all observers.
+     * {@link ProgressObserver#updateWork(Object, String, long)} for all
+     * observers.
      * 
-     * @param observable
-     *            is the observable which fires the event.
      * @param message
      *            is the message to be broadcasted.
-     * @param total
-     *            is the total amount of work to be done.
      * @param finished
      *            is the finished amount since the last call of this method.
      */
