@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 
 import org.junit.Test;
 
-import com.puresoltechnologies.commons.misc.FileUtilities;
+import com.puresoltechnologies.commons.misc.io.FileUtilities;
 
 public class FileUtilitiesTest {
 

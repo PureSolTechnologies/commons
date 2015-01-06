@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.misc;
+package com.puresoltechnologies.commons.misc.io;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,6 +13,10 @@ import java.text.DecimalFormat;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.puresoltechnologies.commons.misc.hash.HashAlgorithm;
+import com.puresoltechnologies.commons.misc.hash.HashCodeGenerator;
+import com.puresoltechnologies.commons.misc.hash.HashId;
 
 /**
  * This class contains several static methods for easier access to standard

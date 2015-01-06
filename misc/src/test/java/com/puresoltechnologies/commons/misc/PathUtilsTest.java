@@ -10,8 +10,8 @@ import java.util.Properties;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.puresoltechnologies.commons.misc.PathResolutionException;
-import com.puresoltechnologies.commons.misc.PathUtils;
+import com.puresoltechnologies.commons.misc.io.PathResolutionException;
+import com.puresoltechnologies.commons.misc.io.PathUtils;
 
 public class PathUtilsTest {
 

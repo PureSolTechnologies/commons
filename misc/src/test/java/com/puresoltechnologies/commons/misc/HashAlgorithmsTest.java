@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 import org.junit.Test;
 
-import com.puresoltechnologies.commons.misc.HashAlgorithm;
+import com.puresoltechnologies.commons.misc.hash.HashAlgorithm;
 
 public class HashAlgorithmsTest {
 

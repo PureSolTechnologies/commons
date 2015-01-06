@@ -16,7 +16,7 @@
  *
  ***************************************************************************/
 
-package com.puresoltechnologies.commons.misc;
+package com.puresoltechnologies.commons.misc.io;
 
 /**
  * This is an enumeration for line terminators.

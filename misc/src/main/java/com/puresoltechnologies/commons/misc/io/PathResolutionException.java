@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.misc;
+package com.puresoltechnologies.commons.misc.io;
 
 public class PathResolutionException extends Exception {
 

@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.misc;
+package com.puresoltechnologies.commons.misc.progress;
 
 /**
  * This interface is used for all classes which are interested in the progress

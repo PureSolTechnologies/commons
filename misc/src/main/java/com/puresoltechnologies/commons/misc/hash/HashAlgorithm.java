@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.misc;
+package com.puresoltechnologies.commons.misc.hash;
 
 /**
  * This enum contains a list of all supported hash algorithms.

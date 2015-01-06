@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.misc;
+package com.puresoltechnologies.commons.misc.hash;
 
 import java.io.Serializable;
 import java.util.IllegalFormatException;

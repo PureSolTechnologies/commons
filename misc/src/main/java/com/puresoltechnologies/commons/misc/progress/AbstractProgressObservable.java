@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.misc;
+package com.puresoltechnologies.commons.misc.progress;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

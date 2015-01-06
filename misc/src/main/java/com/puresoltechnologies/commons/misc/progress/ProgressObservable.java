@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.misc;
+package com.puresoltechnologies.commons.misc.progress;
 
 /**
  * This is an interface which is implemented by progress observables.

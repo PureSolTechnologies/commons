@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 
 import org.junit.Test;
 
-import com.puresoltechnologies.commons.misc.HashCodeGenerator;
+import com.puresoltechnologies.commons.misc.hash.HashCodeGenerator;
 
 public class HashCodeGeneratorTest {
 

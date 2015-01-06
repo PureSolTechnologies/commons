@@ -1,4 +1,4 @@
-package com.puresoltechnologies.commons.misc;
+package com.puresoltechnologies.commons.misc.io;
 
 import java.io.File;
 import java.util.regex.Matcher;

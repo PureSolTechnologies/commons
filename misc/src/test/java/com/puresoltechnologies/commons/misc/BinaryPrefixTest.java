@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 import org.junit.Test;
 
-import com.puresoltechnologies.commons.misc.BinaryPrefix;
+import com.puresoltechnologies.commons.misc.io.BinaryPrefix;
 
 public class BinaryPrefixTest {
 
