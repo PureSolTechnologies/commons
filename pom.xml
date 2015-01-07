@@ -8,6 +8,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<officalName>PureSol Technologies' Commons</officalName>
 	</properties>
 
 	<parent>
@@ -20,8 +21,8 @@
 	<artifactId>parent</artifactId>
 	<version>0.4.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-
-	<name>${project.groupId}.${project.artifactId}</name>
+  
+	<name>${officalName} - ${project.artifactId}</name>
 	<description>PureSol Technologies' commons libraries</description>
 	<inceptionYear>2014</inceptionYear>
 	<url>http://opensource.puresol-technologies.com/commons</url>

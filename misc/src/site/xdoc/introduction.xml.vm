@@ -14,6 +14,9 @@
 	<body>
 		<section name="Introduction">
 			<p>
+				Project Description: ${project.description}
+			</p>
+			<p>
 				This is a module which contains all minor stuff which does not
 				belong to
 				another module, but is used multiple times over and over
@@ -37,6 +40,11 @@
 				This is module also does not conform to the rule of
 				<a href="http://semver.org">semantic versioning</a>
 				. The implementation may change and may be removed anytime.
+			</p>
+			<p>
+				For how to use this project, please have a look to the
+				<a href="usage.html">Usage</a>
+				page.
 			</p>
 		</section>
 	</body>
