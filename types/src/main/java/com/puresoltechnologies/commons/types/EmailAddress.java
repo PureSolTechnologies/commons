@@ -58,6 +58,15 @@ public final class EmailAddress implements Serializable {
 		    "Email address is longer than 254 characters.");
 	}
 	String[] parts = address.split("@");
+	if (parts.length < 2) {
+	    throw new IllegalEmailAddressException(address, "Email address '"
+		    + address + "' is invalid.\nNo @ character included.");
+	}
+	if (parts.length > 2) {
+	    throw new IllegalEmailAddressException(address, "Email address '"
+		    + address
+		    + "' is invalid.\nMultiple @ characters included.");
+	}
 	try {
 	    validateDomainPart(parts[1]);
 	    validateLocalPart(parts[0]);

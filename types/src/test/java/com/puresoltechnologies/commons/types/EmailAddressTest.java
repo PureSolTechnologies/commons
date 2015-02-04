@@ -59,6 +59,24 @@ public class EmailAddressTest {
     }
 
     @Test
+    public void testValidateWithoutAt() {
+	String address = "XXXXXXXX";
+	expectedException.expect(IllegalEmailAddressException.class);
+	expectedException.expectMessage("Email address '" + address
+		+ "' is invalid.\nNo @ character included.");
+	EmailAddress.validate(address);
+    }
+
+    @Test
+    public void testValidateMultipleAt() {
+	String address = "XXX@XXX@xxx.de";
+	expectedException.expect(IllegalEmailAddressException.class);
+	expectedException.expectMessage("Email address '" + address
+		+ "' is invalid.\nMultiple @ characters included.");
+	EmailAddress.validate(address);
+    }
+
+    @Test
     public void testJSONSerialization() throws JsonGenerationException,
 	    JsonMappingException, IOException {
 	EmailAddress original = new EmailAddress(
@@ -68,4 +86,5 @@ public class EmailAddressTest {
 		EmailAddress.class);
 	assertEquals(original, deserialized);
     }
+
 }
