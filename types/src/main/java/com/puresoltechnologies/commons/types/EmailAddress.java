@@ -59,6 +59,20 @@ public final class EmailAddress implements Serializable {
 	}
 	String[] parts = address.split("@");
 	if (parts.length < 2) {
+	    int index = address.indexOf('@');
+	    if (index == 0) {
+		throw new IllegalEmailAddressException(
+			address,
+			"Email address '"
+				+ address
+				+ "' is invalid.\nLocal part must not be empty.");
+	    } else if (index == address.length() - 1) {
+		throw new IllegalEmailAddressException(
+			address,
+			"Email address '"
+				+ address
+				+ "' is invalid.\nDomain part must not be empty.");
+	    }
 	    throw new IllegalEmailAddressException(address, "Email address '"
 		    + address + "' is invalid.\nNo @ character included.");
 	}
@@ -90,6 +104,14 @@ public final class EmailAddress implements Serializable {
     }
 
     public static void validateLocalPart(String localPart) {
+	if (localPart == null) {
+	    throw new IllegalEmailAddressException(localPart + "@?",
+		    "Local part must no be null.");
+	}
+	if (localPart.isEmpty()) {
+	    throw new IllegalEmailAddressException(localPart + "@?",
+		    "Local part must no be empty.");
+	}
 	if (localPart.length() > 64) {
 	    throw new IllegalEmailAddressException(localPart + "@?",
 		    "Local part is longer than 64 characters.");

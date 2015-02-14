@@ -77,6 +77,24 @@ public class EmailAddressTest {
     }
 
     @Test
+    public void testValidateNoLocalPart() {
+	String address = "@puresol-technologies.com";
+	expectedException.expect(IllegalEmailAddressException.class);
+	expectedException.expectMessage("Email address '" + address
+		+ "' is invalid.\n" + "Local part must no be empty.");
+	EmailAddress.validate(address);
+    }
+
+    @Test
+    public void testValidateNoDomainPart() {
+	String address = "ludwig@";
+	expectedException.expect(IllegalEmailAddressException.class);
+	expectedException.expectMessage("Email address '" + address
+		+ "' is invalid.\n" + "Domain part must not be empty.");
+	EmailAddress.validate(address);
+    }
+
+    @Test
     public void testJSONSerialization() throws JsonGenerationException,
 	    JsonMappingException, IOException {
 	EmailAddress original = new EmailAddress(
