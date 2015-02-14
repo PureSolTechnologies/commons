@@ -18,7 +18,7 @@
 
 	<groupId>com.puresoltechnologies.commons</groupId>
 	<artifactId>parent</artifactId>
-	<version>0.4.0</version>
+	<version>0.4.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
   
 	<name>${officalName} - ${project.artifactId}</name>
@@ -153,7 +153,7 @@
 			<plugin>
 				<groupId>com.puresoltechnologies.maven.plugins</groupId>
 				<artifactId>license-maven-plugin</artifactId>
-				<version>1.2.0</version>
+				<version>1.2.1</version>
 				<executions>
 					<execution>
 						<phase>validate</phase>
