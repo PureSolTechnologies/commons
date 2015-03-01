@@ -3,7 +3,7 @@ package com.puresoltechnologies.commons.misc.hash;
 import java.io.Serializable;
 import java.util.IllegalFormatException;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * 
