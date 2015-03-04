@@ -10,7 +10,7 @@ import java.util.Arrays;
  * @author Rick-Rainer Ludwig
  * 
  */
-public class Money implements Comparable<Money>, Serializable {
+public class Money extends Number implements Comparable<Money>, Serializable {
 
     private static final long serialVersionUID = -6697323264404131582L;
 
@@ -187,5 +187,31 @@ public class Money implements Comparable<Money>, Serializable {
 			    + fraction + "' and '" + o.fraction + "'.");
 	}
 	return Long.valueOf(amount).compareTo(o.amount);
+    }
+
+    @Override
+    public int intValue() {
+	if (Math.abs(amount) <= Integer.MAX_VALUE) {
+	    return (int) amount;
+	}
+	throw new IllegalStateException("Amount of '" + amount
+		+ "' cannot be converted into an Integer.");
+    }
+
+    @Override
+    public long longValue() {
+	return amount;
+    }
+
+    @Override
+    public float floatValue() {
+	throw new IllegalStateException(
+		"Money cannot be converted into a Float value without accuracy loss.");
+    }
+
+    @Override
+    public double doubleValue() {
+	throw new IllegalStateException(
+		"Money cannot be converted into a Double value without accuracy loss.");
     }
 }

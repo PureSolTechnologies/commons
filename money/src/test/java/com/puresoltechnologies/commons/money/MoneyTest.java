@@ -42,4 +42,41 @@ public class MoneyTest {
 	assertEquals("12345.67EUR", money.toString());
     }
 
+    @Test
+    public void testToIntValue() {
+	Money money = new Money("EUR", 100, 12345);
+	assertEquals(12345, money.intValue());
+	money = new Money("EUR", 100, 0);
+	assertEquals(0, money.intValue());
+	money = new Money("EUR", 100, -12345);
+	assertEquals(-12345, money.intValue());
+    }
+
+    @Test
+    public void testToLongValue() {
+	Money money = new Money("EUR", 100, 12345678901l);
+	assertEquals(12345678901l, money.longValue());
+	money = new Money("EUR", 100, 0);
+	assertEquals(0, money.longValue());
+	money = new Money("EUR", 100, -12345678901l);
+	assertEquals(-12345678901l, money.longValue());
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testToFloatValue() {
+	Money money = new Money("EUR", 100, 12345678901l);
+	money.floatValue();
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testToDoubleValue() {
+	Money money = new Money("EUR", 100, 12345678901l);
+	money.doubleValue();
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testToIntValueWithTooLargeAmount() {
+	Money money = new Money("EUR", 100, 12345678901l);
+	money.intValue();
+    }
 }
