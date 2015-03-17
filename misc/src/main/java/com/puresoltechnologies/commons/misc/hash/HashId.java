@@ -3,6 +3,7 @@ package com.puresoltechnologies.commons.misc.hash;
 import java.io.Serializable;
 import java.util.IllegalFormatException;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -48,8 +49,7 @@ public class HashId implements Serializable, Comparable<HashId> {
      * @param hash
      *            is the hash.
      */
-    public HashId(@JsonProperty("algorithm") HashAlgorithm algorithm,
-	    @JsonProperty("hash") String hash) {
+    public HashId(HashAlgorithm algorithm, String hash) {
 	super();
 	if ((hash == null) || (hash.isEmpty())) {
 	    throw new IllegalArgumentException(
@@ -63,8 +63,40 @@ public class HashId implements Serializable, Comparable<HashId> {
 	this.hash = hash;
     }
 
+    /**
+     * This is the 2nd initial value constructor for this hash id. <b>This
+     * constructor is needed to provide the algorithm name,too. The algorithm
+     * name is implicitly provided by the algorithm, but is needed on WebUI
+     * site, too. To get it JSON marshalled and unmarshalled, this constructor
+     * was added.</b> In normal code use the other constructor.
+     * 
+     * @param algorithm
+     *            is the identifier of the algorithm used.
+     * @param algorithmName
+     *            is the name of the algorithm. This name is checked against
+     *            algorithm for consistency. An {@link IllegalArgumentException}
+     *            is thrown in case of mismatch.
+     * @param hash
+     *            is the hash.
+     */
+    @JsonCreator
+    public HashId(@JsonProperty("algorithm") HashAlgorithm algorithm,
+	    @JsonProperty("algorithmName") String algorithmName,
+	    @JsonProperty("hash") String hash) {
+	this(algorithm, hash);
+	if (!algorithmName.equals(algorithm.getAlgorithmName())) {
+	    throw new IllegalArgumentException("Provided algorithm name '"
+		    + algorithmName + "' does not match to the algorithm '"
+		    + algorithm.name() + "'.");
+	}
+    }
+
     public HashAlgorithm getAlgorithm() {
 	return algorithm;
+    }
+
+    public String getAlgorithmName() {
+	return algorithm.getAlgorithmName();
     }
 
     public String getHash() {
