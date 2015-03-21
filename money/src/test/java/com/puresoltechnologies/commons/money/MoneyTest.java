@@ -62,16 +62,16 @@ public class MoneyTest {
 	assertEquals(-12345678901l, money.longValue());
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void testToFloatValue() {
 	Money money = new Money("EUR", 100, 12345678901l);
-	money.floatValue();
+	assertEquals(123456789.01f, money.floatValue(), 1e-12);
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void testToDoubleValue() {
 	Money money = new Money("EUR", 100, 12345678901l);
-	money.doubleValue();
+	assertEquals(123456789.01, money.doubleValue(), 1e-12);
     }
 
     @Test(expected = IllegalStateException.class)

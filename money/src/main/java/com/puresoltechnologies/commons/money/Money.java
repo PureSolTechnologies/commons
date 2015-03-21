@@ -189,6 +189,15 @@ public class Money extends Number implements Comparable<Money>, Serializable {
 	return Long.valueOf(amount).compareTo(o.amount);
     }
 
+    /**
+     * Implementation of {@link Number#intValue()}. It returns the result of
+     * {@link #getAmount()} as int.
+     * 
+     * An {@link IllegalStateException} is thrown in case the int value is to
+     * small for the amount.
+     * 
+     * @return An int is returned containing the amount of money.
+     */
     @Override
     public int intValue() {
 	if (Math.abs(amount) <= Integer.MAX_VALUE) {
@@ -198,20 +207,55 @@ public class Money extends Number implements Comparable<Money>, Serializable {
 		+ "' cannot be converted into an Integer.");
     }
 
+    /**
+     * Implementation of {@link Number#longValue()}. It returns the result of
+     * {@link #getAmount()} as long.
+     * 
+     * 
+     * @return A long is returned containing the amount of money.
+     */
     @Override
     public long longValue() {
 	return amount;
     }
 
+    /**
+     * <p>
+     * Implementation of {@link Number#floatValue()}. It returns the result of
+     * {@link #getAmount()} <b>divided</b> by {@link #getFraction()}. This is
+     * the difference to {@link #intValue()} and {@link #longValue()} where the
+     * correct number of amount is returned. Here the result is calculated
+     * already with fractions into a floating point number.
+     * </p>
+     * <p>
+     * <b>Beware:</b> Do not use the result of this method for further money
+     * calculations!
+     * </p>
+     * 
+     * @return A float is returned containing the amount of money.
+     */
     @Override
     public float floatValue() {
-	throw new IllegalStateException(
-		"Money cannot be converted into a Float value without accuracy loss.");
+	return (float) amount / (float) fraction;
     }
 
+    /**
+     * <p>
+     * Implementation of {@link Number#doubeValue()}. It returns the result of
+     * {@link #getAmount()} <b>divided</b> by {@link #getFraction()}. This is
+     * the difference to {@link #intValue()} and {@link #longValue()} where the
+     * correct number of amount is returned. Here the result is calculated
+     * already with fractions into a floating point number.
+     * </p>
+     * <p>
+     * <b>Beware:</b> Do not use the result of this method for further money
+     * calculations!
+     * </p>
+     * 
+     * @return A double is returned containing the amount of money.
+     */
     @Override
     public double doubleValue() {
-	throw new IllegalStateException(
-		"Money cannot be converted into a Double value without accuracy loss.");
+	return (double) amount / (double) fraction;
     }
 }
