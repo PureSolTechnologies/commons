@@ -8,6 +8,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<officalName>Commons</officalName>
+		<project.scm.id>github</project.scm.id>
 	</properties>
 
 	<parent>
