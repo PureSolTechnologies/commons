@@ -241,7 +241,7 @@ public class Money extends Number implements Comparable<Money>, Serializable {
 
     /**
      * <p>
-     * Implementation of {@link Number#doubeValue()}. It returns the result of
+     * Implementation of Number.doubeValue(). It returns the result of
      * {@link #getAmount()} <b>divided</b> by {@link #getFraction()}. This is
      * the difference to {@link #intValue()} and {@link #longValue()} where the
      * correct number of amount is returned. Here the result is calculated
