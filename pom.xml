@@ -371,6 +371,7 @@
 		<module>money.bundle</module>
 		<module>misc</module>
 		<module>misc.bundle</module>
+		<module>website</module>
 	</modules>
 
 </project>

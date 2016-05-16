@@ -1,0 +1,86 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.puresoltechnologies.commons</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.7.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>website</artifactId>
+	<packaging>pom</packaging>
+	<name>${officalName} - ${project.artifactId}</name>
+
+	<description>This Maven project contains the common web site elements for PureSol Technologies.</description>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/website</directory>
+				<targetPath>${project.build.directory}/elements</targetPath>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.ts</include>
+					<include>**/*.html</include>
+				</includes>
+				<excludes>				
+					<exclude>**/node_modules/concurrently</exclude>
+					<exclude>**/node_modules/less</exclude>
+					<exclude>**/node_modules/lite-server</exclude>
+					<exclude>**/node_modules/tsd</exclude>
+					<exclude>**/node_modules/tsline</exclude>
+					<exclude>**/node_modules/typescript</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/website</directory>
+				<targetPath>${project.build.directory}/elements</targetPath>
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>**/*.ts</exclude>
+					<exclude>**/*.html</exclude>
+					<exclude>**/node_modules/concurrently</exclude>
+					<exclude>**/node_modules/less</exclude>
+					<exclude>**/node_modules/lite-server</exclude>
+					<exclude>**/node_modules/tsd</exclude>
+					<exclude>**/node_modules/tsline</exclude>
+					<exclude>**/node_modules/typescript</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>resources</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<descriptor>src/assembly/website.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>website-packaging</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
