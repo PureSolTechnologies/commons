@@ -8,7 +8,7 @@ import {VerticalTabComponent} from './vertical-tab.component';
     template:
     `<div class="row">
        <div class="col-md-4">
-         <ul class="nav nav-pills nav-stacked">
+         <ul class="nav nav-tabs nav-stacked">
            <li class="nav-item" *ngFor="#tab of tabs">
              <a class="{{tab.getClass()}}" (click)="selectTab(tab)">{{tab.getHeading()}}</a>
            </li>
