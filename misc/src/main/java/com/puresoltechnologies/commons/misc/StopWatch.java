@@ -1,7 +1,9 @@
 package com.puresoltechnologies.commons.misc;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 
 /**
  * This class is a simple implementation of a stop watch used for debugging and
@@ -14,37 +16,35 @@ public class StopWatch implements Serializable {
 
     private static final long serialVersionUID = -8824942249939423671L;
 
-    private Date startTime = null;
-    private Date stopTime = null;
-    private long start = 0;
-    private long stop = 0;
+    private Instant startTime = null;
+    private Instant stopTime = null;
+    private Duration duration = null;
 
     public void start() {
 	stopTime = null;
-	stop = 0;
-	startTime = new Date();
-	start = System.nanoTime();
+	duration = null;
+	startTime = Instant.now();
     }
 
     public void stop() {
-	stop = System.nanoTime();
-	stopTime = new Date();
+	stopTime = Instant.now();
+	duration = Duration.between(startTime, stopTime);
     }
 
     public double getSeconds() {
-	return (stop - start) / 1000000000.0;
+	return duration != null ? duration.get(ChronoUnit.NANOS) / 1e9 : 0.0;
     }
 
-    public Date getStartTime() {
-	return startTime != null ? (Date) startTime.clone() : null;
+    public Instant getStartTime() {
+	return startTime != null ? startTime : null;
     }
 
-    public Date getStopTime() {
-	return stopTime != null ? (Date) stopTime.clone() : null;
+    public Instant getStopTime() {
+	return stopTime != null ? stopTime : null;
     }
 
-    public long getMilliseconds() {
-	return ((stop - start) / 1000000);
+    public long getMillis() {
+	return duration != null ? (long) (duration.get(ChronoUnit.NANOS) / 1e6) : 0l;
     }
 
     @Override
