@@ -44,7 +44,8 @@ public class StopWatch implements Serializable {
     }
 
     public long getMillis() {
-	return duration != null ? (long) (duration.get(ChronoUnit.NANOS) / 1e6) : 0l;
+	return duration != null
+		? (long) (duration.get(ChronoUnit.SECONDS) * 1000.0 + duration.get(ChronoUnit.NANOS) / 1e6) : 0l;
     }
 
     @Override
