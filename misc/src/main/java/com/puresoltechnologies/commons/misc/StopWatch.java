@@ -31,16 +31,20 @@ public class StopWatch implements Serializable {
 	duration = Duration.between(startTime, stopTime);
     }
 
-    public double getSeconds() {
-	return duration != null ? duration.get(ChronoUnit.NANOS) / 1e9 : 0.0;
-    }
-
     public Instant getStartTime() {
 	return startTime != null ? startTime : null;
     }
 
     public Instant getStopTime() {
 	return stopTime != null ? stopTime : null;
+    }
+
+    public Duration getDuration() {
+	return duration;
+    }
+
+    public double getSeconds() {
+	return duration != null ? duration.get(ChronoUnit.NANOS) / 1e9 : 0.0;
     }
 
     public long getMillis() {
