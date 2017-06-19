@@ -1,10 +1,9 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 
 import {TabComponent} from './tab.component';
 
 @Component({
     selector: 'tabset',
-    directives: [],
     template:
     `<div>
     <ul class="nav nav-tabs">
