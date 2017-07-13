@@ -26,7 +26,5 @@ public interface PeekingIterator<T> extends Iterator<T> {
      * This method is doing the same like {@link #next()} while dropping the
      * result.
      */
-    public default void skip() {
-	next();
-    }
+    public void skip();
 }
