@@ -27,8 +27,7 @@ import com.puresoltechnologies.commons.misc.hash.HashId;
  */
 public class FileUtilities {
 
-    private static final Logger logger = LoggerFactory
-	    .getLogger(FileUtilities.class);
+    private static final Logger logger = LoggerFactory.getLogger(FileUtilities.class);
 
     /**
      * This method performs a simple copy of sourceFile to targetFile.
@@ -40,8 +39,7 @@ public class FileUtilities {
      * @throws IOException
      *             is thrown in cases of IO issues.
      */
-    public static void copy(File sourceFile, File targetFile)
-	    throws IOException {
+    public static void copy(File sourceFile, File targetFile) throws IOException {
 	FileInputStream in = new FileInputStream(sourceFile);
 	try {
 	    FileOutputStream out = new FileOutputStream(targetFile);
@@ -55,8 +53,7 @@ public class FileUtilities {
 	}
     }
 
-    public static void copy(InputStream in, OutputStream out)
-	    throws IOException {
+    public static void copy(InputStream in, OutputStream out) throws IOException {
 	byte[] buffer = new byte[1024];
 	int len = 0;
 	do {
@@ -71,8 +68,7 @@ public class FileUtilities {
      * This method checks for the requirement for an update.
      * 
      * If a the target file exists and the modification time is greater than the
-     * modification time of the source file, we do not need to analyze
-     * something.
+     * modification time of the source file, we do not need to analyze something.
      * 
      * @param sourceFile
      *            is the source file where it is intended to be copied from.
@@ -100,8 +96,8 @@ public class FileUtilities {
      *            is the file name of the target file.
      * @param text
      *            is the text to be written into the file.
-     * @return <code>true</code> is returned in case of success.
-     *         <code>false</code> is returned otherwise.
+     * @return <code>true</code> is returned in case of success. <code>false</code>
+     *         is returned otherwise.
      */
     public static boolean writeFile(File directory, File fileName, String text) {
 	try {
@@ -129,8 +125,7 @@ public class FileUtilities {
 	}
     }
 
-    public static String readFileToString(File directory, String fileName)
-	    throws IOException {
+    public static String readFileToString(File directory, String fileName) throws IOException {
 	return readFileToString(new File(directory, fileName));
     }
 
@@ -143,8 +138,7 @@ public class FileUtilities {
 	    do {
 		len = inStream.read(buffer);
 		if (len > 0) {
-		    text.append(new String(buffer, 0, len, Charset
-			    .defaultCharset()));
+		    text.append(new String(buffer, 0, len, Charset.defaultCharset()));
 		}
 	    } while (len == buffer.length);
 	    return text.toString();
@@ -154,8 +148,8 @@ public class FileUtilities {
     }
 
     /**
-     * Utility method used to delete the profile directory when run as a
-     * stand-alone application.
+     * Utility method used to delete the profile directory when run as a stand-alone
+     * application.
      * 
      * @param file
      *            The file to recursively delete.
@@ -164,8 +158,11 @@ public class FileUtilities {
      **/
     public static void deleteFileOrDir(File file) throws IOException {
 	if (file.isDirectory()) {
-	    for (File child : file.listFiles()) {
-		deleteFileOrDir(child);
+	    File[] children = file.listFiles();
+	    if (children != null) {
+		for (File child : children) {
+		    deleteFileOrDir(child);
+		}
 	    }
 	}
 	if (!file.delete()) {
@@ -173,8 +170,7 @@ public class FileUtilities {
 	}
     }
 
-    public static HashId createHashId(File file, HashAlgorithm algorithm)
-	    throws IOException {
+    public static HashId createHashId(File file, HashAlgorithm algorithm) throws IOException {
 	if (!file.isFile()) {
 	    throw new IOException("'" + file + "' is not a file!");
 	}
@@ -183,11 +179,11 @@ public class FileUtilities {
     }
 
     /**
-     * This method converts a size in bytes into a string which can be used to
-     * be put into UI.
+     * This method converts a size in bytes into a string which can be used to be
+     * put into UI.
      * 
-     * For example: 1024 will be converted into '1kB', 1024*1024 bytes into
-     * '1MB' and so forth.
+     * For example: 1024 will be converted into '1kB', 1024*1024 bytes into '1MB'
+     * and so forth.
      * 
      * @param size
      *            is the size of the file in Byte to be converted into a

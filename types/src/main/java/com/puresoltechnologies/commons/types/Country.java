@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * This class is used to provide country information of ISO_3166-1.
  * 
- * @see https://en.wikipedia.org/wiki/ISO_3166-1
+ * see: https://en.wikipedia.org/wiki/ISO_3166-1
  * 
  * @author Rick-Rainer Ludwig
  */

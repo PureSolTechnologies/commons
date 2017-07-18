@@ -11,7 +11,8 @@ import java.util.List;
 /**
  * Phone number in the form of E164.
  * 
- * @see https://en.wikipedia.org/wiki/E.164
+ * see: https://en.wikipedia.org/wiki/E.164
+ * 
  * @author Rick-Rainer Ludwig
  */
 public class PhoneNumber {
