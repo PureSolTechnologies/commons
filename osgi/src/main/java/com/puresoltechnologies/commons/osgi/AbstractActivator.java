@@ -25,7 +25,7 @@ public abstract class AbstractActivator implements BundleActivator {
     /**
      * This field keeps the SLF4J {@link Logger} to log messages.
      */
-    private static final Logger logger = LoggerFactory.getLogger(AbstractActivator.class);
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
      * This field holds the current bundle context. This field is static due to the

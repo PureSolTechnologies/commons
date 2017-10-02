@@ -26,10 +26,6 @@
 		</dependency>
 	</dependencies>
 
-	<properties>
-		<bundle.namespace>com.puresoltechnologies.commons.money</bundle.namespace>
-	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
