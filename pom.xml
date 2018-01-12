@@ -6,6 +6,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<officalName>Commons</officalName>
 		<project.scm.id>github</project.scm.id>
+		<streaming.version>1.1.0-SNAPSHOT</streaming.version>
 	</properties>
 
 	<groupId>com.puresoltechnologies.commons</groupId>
@@ -14,7 +15,14 @@
 	<packaging>pom</packaging>
 
 	<name>${officalName} - ${project.artifactId}</name>
-	<description>PureSol Technologies' commons libraries</description>
+	<description>
+		PureSol&nbsp;Technologies' commons libraries: This is a set of 
+		functionality to extend standard JDK functionality and to collect 
+		common functionality for PureSol&nbsp;Technologies' development
+		projects. This library is not intended to be used by parties outside
+		of PureSol&nbsp;Technologies, as changes between versions might be 
+		incompatible.	
+    </description>
 	<inceptionYear>2014</inceptionYear>
 	<url>http://opensource.puresol-technologies.com/commons</url>
 
@@ -95,6 +103,11 @@
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-math3</artifactId>
 				<version>3.6.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.puresoltechnologies.streaming</groupId>
+				<artifactId>iterators</artifactId>
+				<version>${streaming.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.jaxrs</groupId>
@@ -403,7 +416,7 @@
 		<module>types</module>
 		<module>money</module>
 		<module>math</module>
-		<module>misc</module>
+		<module>ddd</module>
 		<module>website</module>
 	</modules>
 
