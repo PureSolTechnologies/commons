@@ -25,19 +25,18 @@ public abstract class AbstractActivator implements BundleActivator {
     /**
      * This field keeps the SLF4J {@link Logger} to log messages.
      */
-    private static final Logger logger = LoggerFactory
-	    .getLogger(AbstractActivator.class);
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
-     * This field holds the current bundle context. This field is static due to
-     * the fact that the {@link BundleActivator} is treaded like a singleton and
-     * is only called once per state.
+     * This field holds the current bundle context. This field is static due to the
+     * fact that the {@link BundleActivator} is treaded like a singleton and is only
+     * called once per state.
      */
-    private static BundleContext context = null;
+    private BundleContext context = null;
 
     /**
-     * This field keeps the registered services. This field is needed for
-     * automated de-registration on bundle stop.
+     * This field keeps the registered services. This field is needed for automated
+     * de-registration on bundle stop.
      */
     private final List<ServiceRegistration<?>> serviceRegistrations = new ArrayList<ServiceRegistration<?>>();
 
@@ -46,29 +45,26 @@ public abstract class AbstractActivator implements BundleActivator {
      */
     public AbstractActivator() {
 	super();
-	logger.debug("Bundle with base package "
-		+ getClass().getPackage().getName() + " was initialized.");
+	logger.debug("Bundle with base package " + getClass().getPackage().getName() + " was initialized.");
     }
 
     @Override
     public void start(BundleContext context) throws Exception {
-	logger.info("Starting bundle '" + context.getBundle().getSymbolicName()
-		+ "'...");
-	if (AbstractActivator.context != null) {
+	logger.info("Starting bundle '" + context.getBundle().getSymbolicName() + "'...");
+	if (this.context != null) {
 	    throw new RuntimeException("Bundle was already started.");
 
 	}
-	AbstractActivator.context = context;
+	this.context = context;
     }
 
     @Override
     public void stop(BundleContext context) throws Exception {
-	logger.info("Stopping bundle '" + context.getBundle().getSymbolicName()
-		+ "'...");
-	if (AbstractActivator.context == null) {
+	logger.info("Stopping bundle '" + context.getBundle().getSymbolicName() + "'...");
+	if (this.context == null) {
 	    throw new RuntimeException("Bundle was not started, yet.");
 	}
-	AbstractActivator.context = null;
+	this.context = null;
 	deregisterServices();
     }
 
@@ -76,8 +72,7 @@ public abstract class AbstractActivator implements BundleActivator {
      * This method de-registers all former registered services.
      */
     private void deregisterServices() {
-	Iterator<ServiceRegistration<?>> serviceIterator = serviceRegistrations
-		.iterator();
+	Iterator<ServiceRegistration<?>> serviceIterator = serviceRegistrations.iterator();
 	while (serviceIterator.hasNext()) {
 	    ServiceRegistration<?> serviceReference = serviceIterator.next();
 	    serviceReference.unregister();
@@ -88,12 +83,12 @@ public abstract class AbstractActivator implements BundleActivator {
     /**
      * This method returns the current bundle context.
      * 
-     * @return A {@link BundleContext} is returned containing the current
-     *         context. The return value is expected to be not null due to this
-     *         class is called during bundle startup. If the bundle was not
-     *         started, the return value is null.
+     * @return A {@link BundleContext} is returned containing the current context.
+     *         The return value is expected to be not null due to this class is
+     *         called during bundle startup. If the bundle was not started, the
+     *         return value is null.
      */
-    public static final BundleContext getBundleContext() {
+    public final BundleContext getBundleContext() {
 	if (context == null) {
 	    throw new RuntimeException("Bundle was not activated, yet.");
 	}
@@ -105,8 +100,7 @@ public abstract class AbstractActivator implements BundleActivator {
      * this method auto deregistered during bundle stop.
      * 
      * @param iface
-     *            is the interface of the service to be used for later
-     *            retrieval.
+     *            is the interface of the service to be used for later retrieval.
      * @param instance
      *            is an instance of the object to be registered as service for
      *            interface iface.
@@ -115,8 +109,7 @@ public abstract class AbstractActivator implements BundleActivator {
      * @return A {@link ServiceRegistration} is returned of the newly registered
      *         service.
      */
-    public final <T> ServiceRegistration<?> registerService(Class<T> iface,
-	    T instance) {
+    public final <T> ServiceRegistration<?> registerService(Class<T> iface, T instance) {
 	Hashtable<String, String> properties = new Hashtable<String, String>();
 	return registerService(iface, instance, properties);
     }
@@ -126,8 +119,7 @@ public abstract class AbstractActivator implements BundleActivator {
      * this method auto de-registered during bundle stop.
      * 
      * @param iface
-     *            is the interface of the service to be used for later
-     *            retrieval.
+     *            is the interface of the service to be used for later retrieval.
      * @param instance
      *            is an instance of the object to be registered as service for
      *            interface iface.
@@ -139,13 +131,12 @@ public abstract class AbstractActivator implements BundleActivator {
      * @return A {@link ServiceRegistration} is returned of the newly registered
      *         service.
      */
-    public final <T> ServiceRegistration<?> registerService(Class<T> iface,
-	    T instance, Dictionary<String, String> dictionary) {
-	logger.info("Register service '{}' for interface '{}' (context='"
-		+ context.getBundle().getSymbolicName() + "').", instance
-		.getClass().getName(), iface.getName());
-	ServiceRegistration<?> serviceRegistration = context.registerService(
-		iface, instance, dictionary);
+    public final <T> ServiceRegistration<?> registerService(Class<T> iface, T instance,
+	    Dictionary<String, String> dictionary) {
+	logger.info(
+		"Register service '{}' for interface '{}' (context='" + context.getBundle().getSymbolicName() + "').",
+		instance.getClass().getName(), iface.getName());
+	ServiceRegistration<?> serviceRegistration = context.registerService(iface, instance, dictionary);
 	serviceRegistrations.add(serviceRegistration);
 	return serviceRegistration;
     }

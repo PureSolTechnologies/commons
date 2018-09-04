@@ -1,10 +1,9 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 
 import {VerticalTabComponent} from './vertical-tab.component';
 
 @Component({
     selector: 'vertical-tabset',
-    directives: [],
     template:
     `<div class="row">
        <div class="col-md-4">

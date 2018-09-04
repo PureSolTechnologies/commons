@@ -1,8 +1,7 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
 	selector: 'panel',
-	directives: [],
 	template:
 `<div class="panel">
   <div class="panel-heading">

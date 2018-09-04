@@ -34,19 +34,16 @@ public class EmailAddressTest {
 
     @Test
     public void testDomainPartMaximumLength() {
-	EmailAddress
-		.validateDomainPart("abcdefg10.abcdefg20.abcdefg30.abcdefg40.abcdefg50.abcdefg60.abcdefg70.abcdefg80.abcdefg90.abcdef100.abcdef110.abcdef120.abcdef130.abcdef140.abcdef150.abcdef160.abcdef170.abcdef180.abcdef190.abcdef200.abcdef210.abcdef220.abcdef230.abcdef240.abcdef250.com");
+	EmailAddress.validateDomainPart(
+		"abcdefg10.abcdefg20.abcdefg30.abcdefg40.abcdefg50.abcdefg60.abcdefg70.abcdefg80.abcdefg90.abcdef100.abcdef110.abcdef120.abcdef130.abcdef140.abcdef150.abcdef160.abcdef170.abcdef180.abcdef190.abcdef200.abcdef210.abcdef220.abcdef230.abcdef240.abcdef250.com");
     }
 
     @Test
     public void testDomainPartTooLong() {
 	String domainPart = "abcdefg10.abcdefg20.abcdefg30.abcdefg40.abcdefg50.abcdefg60.abcdefg70.abcdefg80.abcdefg90.abcdef100.abcdef110.abcdef120.abcdef130.abcdef140.abcdef150.abcdef160.abcdef170.abcdef180.abcdef190.abcdef200.abcdef210.abcdef220.abcdef230.abcdef240.abcdef250.info";
 	expectedException.expect(IllegalEmailAddressException.class);
-	expectedException
-		.expectMessage("Email address '?@"
-			+ domainPart
-			+ "' is invalid.\n"
-			+ "Domain part is longer than 253 characters (254 characters).");
+	expectedException.expectMessage("Email address '?@" + domainPart + "' is invalid.\n"
+		+ "Domain part is longer than 253 characters (254 characters).");
 	EmailAddress.validateDomainPart(domainPart);
     }
 
@@ -54,8 +51,7 @@ public class EmailAddressTest {
     public void testDomainPartLastDomainTooShort() {
 	String domainPart = "a.a";
 	expectedException.expect(IllegalEmailAddressException.class);
-	expectedException.expectMessage("Email address '" + domainPart
-		+ "' is invalid.\nDomain part is invalid.");
+	expectedException.expectMessage("Email address '" + domainPart + "' is invalid.\nDomain part is invalid.");
 	EmailAddress.validateDomainPart(domainPart);
     }
 
@@ -63,8 +59,7 @@ public class EmailAddressTest {
     public void testValidateWithoutAt() {
 	String address = "XXXXXXXX";
 	expectedException.expect(IllegalEmailAddressException.class);
-	expectedException.expectMessage("Email address '" + address
-		+ "' is invalid.\nNo @ character included.");
+	expectedException.expectMessage("Email address '" + address + "' is invalid.\nNo @ character included.");
 	EmailAddress.validate(address);
     }
 
@@ -72,8 +67,7 @@ public class EmailAddressTest {
     public void testValidateMultipleAt() {
 	String address = "XXX@XXX@xxx.de";
 	expectedException.expect(IllegalEmailAddressException.class);
-	expectedException.expectMessage("Email address '" + address
-		+ "' is invalid.\nMultiple @ characters included.");
+	expectedException.expectMessage("Email address '" + address + "' is invalid.\nMultiple @ characters included.");
 	EmailAddress.validate(address);
     }
 
@@ -81,8 +75,8 @@ public class EmailAddressTest {
     public void testValidateNoLocalPart() {
 	String address = "@puresol-technologies.com";
 	expectedException.expect(IllegalEmailAddressException.class);
-	expectedException.expectMessage("Email address '" + address
-		+ "' is invalid.\n" + "Local part must no be empty.");
+	expectedException
+		.expectMessage("Email address '" + address + "' is invalid.\n" + "Local part must no be empty.");
 	EmailAddress.validate(address);
     }
 
@@ -90,20 +84,25 @@ public class EmailAddressTest {
     public void testValidateNoDomainPart() {
 	String address = "ludwig@";
 	expectedException.expect(IllegalEmailAddressException.class);
-	expectedException.expectMessage("Email address '" + address
-		+ "' is invalid.\n" + "Domain part must not be empty.");
+	expectedException
+		.expectMessage("Email address '" + address + "' is invalid.\n" + "Domain part must not be empty.");
 	EmailAddress.validate(address);
     }
 
     @Test
-    public void testJSONSerialization() throws JsonGenerationException,
-	    JsonMappingException, IOException {
-	EmailAddress original = new EmailAddress(
-		"ludwig@puresol-technologies.com");
+    public void testJSONSerialization() throws JsonGenerationException, JsonMappingException, IOException {
+	EmailAddress original = new EmailAddress("ludwig@puresol-technologies.com");
 	String serialized = JSONSerializer.toJSONString(original);
-	EmailAddress deserialized = JSONSerializer.fromJSONString(serialized,
-		EmailAddress.class);
+	EmailAddress deserialized = JSONSerializer.fromJSONString(serialized, EmailAddress.class);
 	assertEquals(original, deserialized);
+    }
+
+    @Test
+    public void testJSONSerializationFromSimpleString()
+	    throws JsonGenerationException, JsonMappingException, IOException {
+	String serialized = "{\"address\":\"a@a.de\"}";
+	EmailAddress deserialized = JSONSerializer.fromJSONString(serialized, EmailAddress.class);
+	assertEquals("a@a.de", deserialized.getAddress());
     }
 
 }

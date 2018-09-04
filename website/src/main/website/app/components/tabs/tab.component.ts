@@ -1,10 +1,9 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 
 import {TabSetComponent} from './tabset.component';
 
 @Component({
     selector: 'tab',
-    directives: [],
     template:
     `<div [hidden]="!active">
     <ng-content></ng-content>
