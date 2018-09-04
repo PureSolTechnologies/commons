@@ -1,6 +1,6 @@
 package com.puresoltechnologies.commons.ddd;
 
-import com.puresoltechnologies.streaming.StreamIterable;
+import com.puresoltechnologies.streaming.iterators.StreamIterable;
 
 /**
  * This interface marks a class a repository for a certain type of objects.
@@ -16,7 +16,7 @@ public interface Repository<T extends DDDDataObject> extends DDDElement {
      * This method inserts the provided object into the repository.
      * 
      * @param o
-     *            is the object to be stored.
+     *              is the object to be stored.
      */
     public void insert(T o);
 
@@ -24,7 +24,7 @@ public interface Repository<T extends DDDDataObject> extends DDDElement {
      * This method deletes the provided object from the repository.
      * 
      * @param o
-     *            is the object to be deleted.
+     *              is the object to be deleted.
      */
     public void delete(T o);
 
