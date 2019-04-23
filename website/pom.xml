@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -10,8 +10,8 @@
 
 	<artifactId>website</artifactId>
 	<packaging>pom</packaging>
-	<name>${officalName} - ${project.artifactId}</name>
 
+	<name>${officalName} - ${project.artifactId}</name>
 	<description>This Maven project contains the common web site elements for PureSol Technologies.</description>
 
 	<build>
@@ -82,5 +82,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
