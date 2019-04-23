@@ -41,6 +41,7 @@
 	</developers>
 
 	<modules>
+		<module>misc</module>
 		<module>types</module>
 		<module>money</module>
 		<module>math</module>
