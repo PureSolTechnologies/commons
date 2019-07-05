@@ -64,6 +64,20 @@
 		<url>http://ci.puresol-technologies.net/job/Commons</url>
 	</ciManagement>
 	<distributionManagement>
+		<repository>
+			<id>release-repository</id>
+			<name>Release Repository</name>
+			<layout>default</layout>
+			<uniqueVersion>true</uniqueVersion>
+			<url>${release.repository.url}</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot-repository</id>
+			<name>Snapshot Repository</name>
+			<layout>default</layout>
+			<uniqueVersion>true</uniqueVersion>
+			<url>${snapshot.repository.url}</url>
+		</snapshotRepository>
 		<site>
 			<id>FTPPureSolTechnologiesCom</id>
 			<name>FTPPureSolTechnologiesCom</name>
@@ -170,6 +184,9 @@
 				<plugin>
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>3.1.0</version>
+					<configuration>
+						<failOnError>false</failOnError>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
@@ -229,12 +246,8 @@
 								<dependencyConvergence>
 									<uniqueVersions>true</uniqueVersions>
 								</dependencyConvergence>
-								<reactorModuleConvergence>
-									<message>The reactor is not valid</message>
-									<ignoreModuleDependencies>true</ignoreModuleDependencies>
-								</reactorModuleConvergence>
 								<requireJavaVersion>
-									<version>[9,)</version>
+									<version>[11.0.2,)</version>
 								</requireJavaVersion>
 								<requireMavenVersion>
 									<version>[3.6.0,)</version>
@@ -300,8 +313,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>9</source>
-					<target>9</target>
+					<source>11</source>
+					<target>11</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>

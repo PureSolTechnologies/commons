@@ -6,7 +6,7 @@ package com.puresoltechnologies.commons.ddd;
  * <p>
  * Value objects do not have an identity like {@link Entity} objects and just
  * store values. Comparison is done via the attributes.
- * 
+ *
  * @author Rick-Rainer Ludwig
  *
  */
