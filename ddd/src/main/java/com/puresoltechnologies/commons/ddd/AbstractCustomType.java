@@ -1,7 +1,5 @@
 package com.puresoltechnologies.commons.ddd;
 
-import java.util.Objects;
-
 /**
  * This is an abstract implementation for {@link CustomType} to provide generic
  * functionality common for all custom types.
@@ -31,7 +29,7 @@ public abstract class AbstractCustomType<T> implements CustomType<T> {
     protected AbstractCustomType(T value) {
 	super();
 	this.value = value;
-	hashCode = Objects.hash(value);
+	hashCode = value.hashCode();
     }
 
     /**
@@ -68,6 +66,9 @@ public abstract class AbstractCustomType<T> implements CustomType<T> {
 	    return false;
 	}
 	AbstractCustomType<?> other = (AbstractCustomType<?>) obj;
+	if (hashCode != other.hashCode) {
+	    return false;
+	}
 	if (value == null) {
 	    if (other.value != null) {
 		return false;
