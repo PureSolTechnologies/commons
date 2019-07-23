@@ -19,7 +19,7 @@ package com.puresoltechnologies.commons.ddd;
 public abstract class AbstractCustomType<T> implements CustomType<T> {
 
     private final T value;
-    private int hashCode;
+    private final int hashCode;
 
     /**
      * This is the default constructor which takes any primitive value to wrap it.
@@ -40,8 +40,7 @@ public abstract class AbstractCustomType<T> implements CustomType<T> {
      *                     unwrapped and re-wrapped.
      */
     protected AbstractCustomType(CustomType<T> wrappedValue) {
-	super();
-	this.value = wrappedValue.getValue();
+	this(wrappedValue.getValue());
     }
 
     @Override
