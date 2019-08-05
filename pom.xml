@@ -312,8 +312,8 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>11</source>
-					<target>11</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
@@ -329,6 +329,7 @@
 							<Implementation-Title>${project.groupId}:${project.artifactId}</Implementation-Title>
 							<Implementation-Version>${project.version}</Implementation-Version>
 							<Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+							<Automatic-Module-Name>${project.groupId}.${project.artifactId}</Automatic-Module-Name>
 							<Vendor-URL>${project.organization.url}</Vendor-URL>
 							<Project-URL>${project.url}</Project-URL>
 						</manifestEntries>
@@ -353,6 +354,7 @@
 									<Implementation-Title>${project.groupId}:${project.artifactId}</Implementation-Title>
 									<Implementation-Version>${project.version}</Implementation-Version>
 									<Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+									<Automatic-Module-Name>${project.groupId}.${project.artifactId}</Automatic-Module-Name>
 									<Vendor-URL>${project.organization.url}</Vendor-URL>
 									<Project-URL>${project.url}</Project-URL>
 								</manifestEntries>
